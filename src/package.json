@@ -38,6 +38,10 @@
     },
     "license": "Apache-2.0",
     "homepage": "https://github.com/Essent/nativescript-ng-sentry",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/Essent/nativescript-ng-sentry.git"
+    },
     "readmeFilename": "README.md",
     "devDependencies": {
         "tns-core-modules": "^3.1.0",
