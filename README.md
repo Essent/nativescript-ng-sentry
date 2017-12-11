@@ -2,7 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/@essent/nativescript-ng-sentry.svg?style=flat-square)](https://www.npmjs.com/package/@essent/nativescript-ng-sentry)
 
-This is a plugin to log errors with [Sentry](https://sentry.io).
+This is a plugin to log app crashes with [Sentry](https://sentry.io).
 
 ## Installation
 
@@ -28,22 +28,24 @@ At the launch of your app call `setCredentials` with your own credentials, these
 NgSentry.getInstance().setCredentials('123456', '123456789abcdefghijklmnopqrstuvw');
 ```
 
-To log an error call `saveError` with the error message and error details.
-The error details will be used as a Sentry breadcrumb, you can use this to save a stacktrace for example.
+To log a crash call `saveCrash` with a message and details.
+The details will be used as a Sentry breadcrumb, you can use this to save a stacktrace for example.
+You can have a look at [our example](./demo/app/app.ts#L14) on how to call this with an uncaughtErrorEvent.
 
 ```ts
-NgSentry.getInstance().saveError('My error message', 'My error details');
+NgSentry.getInstance().saveCrash('My crash message', 'My crash details');
 ```
 
-Errors are not send to Sentry automatically, you can call `sendErrors` to send your last error to Sentry.
+Crashes are not send to Sentry automatically, you can call `sendCrashes` to send all saved crashes to Sentry.
+We suggest you call this method in the resume event of your app.
 
 ```ts
-NgSentry.getInstance().sendErrors();
+NgSentry.getInstance().sendCrashes();
 ```
 
 #### Breadcrumbs (optional)
 
-You can save breadcrumbs to see what a user did before an error occurred, these will be added to the next error you save.
+You can save breadcrumbs to see what a user did before a crash occurred, these will be added to the next crash you save.
 To add a breadcrumb use `saveBreadcrumb` with a title and category.
 
 ```ts

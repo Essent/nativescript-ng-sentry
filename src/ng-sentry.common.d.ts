@@ -14,8 +14,10 @@ export declare class Common {
     static getInstance(): Common;
     setCredentials(sentryId: string, sentryKey: string): void;
     saveBreadcrumb(message: string, category: string, properties?: KeyValue<string>): void;
-    saveError(errorMessage: string, errorDetails: string): void;
-    sendErrors(): void;
+    saveCrash(errorMessage: string, errorDetails: string): void;
+    sendCrashes(): void;
+    private submitCrash(crash);
     private setVersionName();
     private setVersionCode();
+    private isPresentInSettings(storeKey);
 }

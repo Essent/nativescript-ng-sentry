@@ -11,7 +11,7 @@ export class Common {
 
     private maxAmountOfBreadcrumbs: number = 50;
     private endPoint: string;
-    private readonly storageKey: string = 'toSendErrors';
+    private readonly storageKey: string = 'sentryCrashesQueue';
 
     private breadcrumbs: Array<any> = [];
     private versionName: string = '';
@@ -50,10 +50,10 @@ export class Common {
         }
     }
 
-    public saveError(errorMessage: string, errorDetails: string): void {
+    public saveCrash(errorMessage: string, errorDetails: string): void {
         this.saveBreadcrumb('' + errorDetails, 'crash start');
 
-        const errorData = {
+        const crashData = {
             project: '253147',
             logger: 'nativescript',
             platform: 'javascript',
@@ -86,15 +86,28 @@ export class Common {
             }
         };
 
-        setString(this.storageKey, JSON.stringify(errorData));
+        let crashes: Array<any> = [];
+        if (this.isPresentInSettings(this.storageKey)) {
+            crashes = JSON.parse(getString(this.storageKey));
+        }
+        crashes.push(crashData);
+        setString(this.storageKey, JSON.stringify(crashes));
     }
 
-    public sendErrors(): void {
-        if (getString(this.storageKey) === undefined) {
+    public sendCrashes(): void {
+        if (!this.isPresentInSettings(this.storageKey)) {
             return;
         }
 
-        const postData = JSON.parse(getString(this.storageKey));
+        const crashes = JSON.parse(getString(this.storageKey));
+        for (let crash of crashes) {
+            this.submitCrash(crash);
+        }
+    }
+
+    private submitCrash(crash) {
+        console.log('submitCrash', crash.message);
+
         http.request({
             url: this.endPoint,
             method: "POST",
@@ -103,11 +116,17 @@ export class Common {
                 'Accept': '*/*',
                 'Origin': 'nativescript://'
             },
-            content: JSON.stringify(postData)
+            content: JSON.stringify(crash)
         }).then((response) => {
-            remove(this.storageKey);
+            // remove crash from saved crashes
+            const crashes = JSON.parse(getString(this.storageKey));
+            const index: number = crashes.indexOf(crash, 0);
+            if (index > -1) {
+                crashes.splice(index, 1);
+                setString(this.storageKey, JSON.stringify(crashes));
+            }
         }, (e) => {
-            console.error("Sentry error", e);
+            console.error("Sentry send error", e);
         });
     }
 
@@ -121,5 +140,9 @@ export class Common {
         getVersionCode().then((versionCode: string) => {
             this.versionCode = versionCode;
         });
+    }
+
+    private isPresentInSettings(storeKey: string): boolean {
+        return getString(storeKey) !== undefined;
     }
 }
