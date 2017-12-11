@@ -43,7 +43,7 @@ We suggest you call this method in the resume event of your app.
 NgSentry.getInstance().sendCrashes();
 ```
 
-#### Breadcrumbs (optional)
+### Breadcrumbs (optional)
 
 You can save breadcrumbs to see what a user did before a crash occurred, these will be added to the next crash you save.
 To add a breadcrumb use `saveBreadcrumb` with a title and category.
