@@ -1,40 +1,61 @@
-# Your Plugin Name
+# NativeScript plugin for Sentry
 
-Add your plugin badges here. See [nativescript-urlhandler](https://github.com/hypery2k/nativescript-urlhandler) for example.
+[![npm version](https://img.shields.io/npm/v/nativescript-ng-sentry.svg?style=flat-square)](https://www.npmjs.com/package/@essent/nativescript-ng-sentry)
 
-Then describe what's the purpose of your plugin. 
-
-In case you develop UI plugin, this is where you can add some screenshots.
-
-## (Optional) Prerequisites / Requirements
-
-Describe the prerequisites that the user need to have installed before using your plugin. See [nativescript-firebase plugin](https://github.com/eddyverbruggen/nativescript-plugin-firebase) for example.
+This is a plugin to log errors with [Sentry](https://sentry.io).
 
 ## Installation
 
-Describe your plugin installation steps. Ideally it would be something like:
+Run the following command from the root of your project:
 
-```javascript
-tns plugin add <your-plugin-name>
 ```
+$ tns plugin add @essent/nativescript-ng-sentry
+```
+
+This command automatically installs the necessary files, as well as stores nativescript-ng-sentry as a dependency in your project's `package.json` file.
 
 ## Usage 
 
-Describe any usage specifics for your plugin. Give examples for Android, iOS, Angular if needed. See [nativescript-drop-down](https://www.npmjs.com/package/nativescript-drop-down) for example.
-	
-	```javascript
-    Usage code snippets here
-    ```)
+To use nativescript-ng-sentry you must first `import` the module:
 
-## API
+```ts
+import { NgSentry } from 'nativescript-ng-sentry';
+```
 
-Describe your plugin methods and properties here. See [nativescript-feedback](https://github.com/EddyVerbruggen/nativescript-feedback) for example.
-    
-| Property | Default | Description |
-| --- | --- | --- |
-| some property | property default value | property description, default values, etc.. |
-| another property | property default value | property description, default values, etc.. |
-    
-## License
+At the launch of your app call `setCredentials` with your own credentials, these can be found in your Sentry Project Settings, Client Keys (DSN). Use the public DSN for these credentials.
 
-Apache License Version 2.0, January 2004
+```ts
+NgSentry.getInstance().setCredentials('123456', '123456789abcdefghijklmnopqrstuvw');
+```
+
+To log an error call `saveError` with the error message and error details.
+The error details will be used as a Sentry breadcrumb, you can use this to save a stacktrace for example.
+
+```ts
+NgSentry.getInstance().saveError('My error message', 'My error details');
+```
+
+Errors are not send to Sentry automatically, you can call `sendErrors` to send your last error to Sentry.
+
+```ts
+NgSentry.getInstance().sendErrors();
+```
+
+#### Breadcrumbs (optional)
+
+You can save breadcrumbs to see what a user did before an error occurred, these will be added to the next error you save.
+To add a breadcrumb use `saveBreadcrumb` with a title and category.
+
+```ts
+NgSentry.getInstance().saveBreadcrumb('Routed to details page', 'state');
+```
+
+Optionally you can add extra data to the breadcrumb.
+
+```ts
+const properties: KeyValue<string> = {
+    page: 'Change user data',
+    changed: 'Username'
+};
+NgSentry.getInstance().saveBreadcrumb('Save success', 'action', properties);
+```

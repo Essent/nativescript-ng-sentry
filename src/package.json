@@ -1,7 +1,7 @@
 {
     "name": "nativescript-ng-sentry",
     "version": "1.0.0",
-    "description": "Your awesome NativeScript plugin.",
+    "description": "A NativeScript plugin to log errors with Sentry.",
     "main": "ng-sentry",
     "typings": "index.d.ts",
     "nativescript": {
@@ -30,7 +30,8 @@
         "NativeScript",
         "JavaScript",
         "Android",
-        "iOS"
+        "iOS",
+        "Sentry"
     ],
     "author": "Essent",
     "bugs": {
