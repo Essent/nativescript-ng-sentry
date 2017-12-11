@@ -1,13 +1,19 @@
-import * as observable from 'tns-core-modules/data/observable';
 import { NgSentry } from 'nativescript-ng-sentry';
+import {topmost as topmostFrame} from "tns-core-modules/ui/frame";
 
-// Event handler for Page 'loaded' event attached in main-page.xml
-export function pageLoaded(args: observable.EventData) {
-    NgSentry.getInstance().setCredentials('123456', '123456789abcdefghijklmnopqrstuvw');
+function onNavigatingTo(args: any) {
+    const toPage: string = args.object.toString();
+    NgSentry.getInstance().saveBreadcrumb(toPage, 'state');
+}
+exports.onNavigatingTo = onNavigatingTo;
 
-    // report a crash 1 sec after startup
-    setTimeout(() => {
-        NgSentry.getInstance().saveError('test err msg from plugin', 'test err stack trace from plugin');
-        NgSentry.getInstance().sendErrors();
-    },1000);
+export function openDetails(args: any) {
+    topmostFrame().navigate({
+        moduleName: "details-page"
+    });
+}
+
+export function forceCrash(args: any) {
+    const newProperty = undefined;
+    const testProperty = newProperty.notFound;
 }
