@@ -28,9 +28,9 @@ At the launch of your app call `setCredentials` with your own credentials, these
 NgSentry.getInstance().setCredentials('123456', '123456789abcdefghijklmnopqrstuvw');
 ```
 
-To log a crash call `saveCrash` with a message and details.
-The details will be used as a Sentry breadcrumb, you can use this to save a stacktrace for example.
-You can have a look at [our example](./demo/app/app.ts#L14) on how to call this with an uncaughtErrorEvent.
+To log a crash, call `saveCrash` with a message and details.
+The details will be used as a Sentry breadcrumb, you can use this to save a stacktrace, for example.
+You can have a look at [our example](./demo/app/app.ts) on how to call this with an uncaughtErrorEvent.
 
 ```ts
 NgSentry.getInstance().saveCrash('My crash message', 'My crash details');
