@@ -12,7 +12,8 @@ export declare class Common {
     private environment;
     constructor();
     static getInstance(): Common;
-    setCredentials(sentryId: string, sentryKey: string): void;
+    setCredentials(sentryId: string, sentryKey: string, environment?: string): void;
+    setMaxAmountOfBreadcrumbs(amount: number): void;
     saveBreadcrumb(message: string, category: string, properties?: KeyValue<string>): void;
     saveCrash(errorMessage: string, errorDetails: string): void;
     sendCrashes(): void;
