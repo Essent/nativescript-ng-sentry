@@ -37,6 +37,10 @@ export class Common {
         this.endPoint = 'https://sentry.io/api/' + sentryId + '/store/?sentry_version=7&sentry_client=raven-js%2F3.20.1&sentry_key=' + sentryKey;
     }
 
+    public setMaxAmountOfBreadcrumbs(amount: number) {
+        this.maxAmountOfBreadcrumbs = amount;
+    }
+
     public saveBreadcrumb(message: string, category: string, properties?: KeyValue<string>): void {
         const crumb = {
             timestamp: moment(),

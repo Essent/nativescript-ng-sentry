@@ -61,3 +61,8 @@ const properties: KeyValue<string> = {
 };
 NgSentry.getInstance().saveBreadcrumb('Save success', 'action', properties);
 ```
+
+Optionally you can set a maximum amount of breadcrumbs, the default is 50.
+```ts
+NgSentry.getInstance().setMaxAmountOfBreadcrumbs(10);
+```
