@@ -1,6 +1,6 @@
 # NativeScript plugin for Sentry
 
-[![npm version](https://img.shields.io/npm/v/nativescript-ng-sentry.svg?style=flat-square)](https://www.npmjs.com/package/@essent/nativescript-ng-sentry)
+[![npm version](https://img.shields.io/npm/v/@essent/nativescript-ng-sentry.svg?style=flat-square)](https://www.npmjs.com/package/@essent/nativescript-ng-sentry)
 
 This is a plugin to log errors with [Sentry](https://sentry.io).
 
