@@ -16,6 +16,7 @@ export class Common {
     private breadcrumbs: Array<any> = [];
     private versionName: string = '';
     private versionCode: string = '';
+    private sentryId: string = '';
     private environment: string = 'DEVELOPMENT';
 
     constructor() {
@@ -37,6 +38,7 @@ export class Common {
     }
 
     public setCredentials(sentryId: string, sentryKey: string, environment?: string) {
+        this.sentryId = sentryId;
         this.endPoint = 'https://sentry.io/api/' + sentryId + '/store/?sentry_version=7&sentry_client=raven-js%2F3.22.2&sentry_key=' + sentryKey;
         if (environment) {
             this.environment = environment;
@@ -64,7 +66,7 @@ export class Common {
         this.saveBreadcrumb('' + errorDetails, 'crash start');
 
         const crashData = {
-            project: '253147',
+            project: this.sentryId,
             logger: 'nativescript',
             platform: 'javascript',
             message: '' + errorMessage,
