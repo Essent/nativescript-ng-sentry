@@ -1,11 +1,13 @@
 import { getVersionName, getVersionCode } from 'nativescript-appversion';
 import * as platform from 'tns-core-modules/platform';
 import * as http from 'tns-core-modules/http';
-import { setString, getString, remove } from 'tns-core-modules/application-settings';
+import { setString, getString } from 'tns-core-modules/application-settings';
 import * as moment from 'moment/moment';
-import { isNullOrUndefined } from '../demo/node_modules/tns-core-modules/utils/types';
+import { isNullOrUndefined } from 'tns-core-modules/utils/types';
 
-export interface KeyValue<T> { [key: string]: T; }
+export interface KeyValue<T> {
+    [key: string]: T;
+}
 
 export class Common {
     private static instance: Common = new Common();
