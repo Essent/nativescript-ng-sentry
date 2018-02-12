@@ -9,6 +9,7 @@ export declare class Common {
     private breadcrumbs;
     private versionName;
     private versionCode;
+    private sentryId;
     private environment;
     constructor();
     static getInstance(): Common;

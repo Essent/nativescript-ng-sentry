@@ -3,6 +3,7 @@ import * as platform from 'tns-core-modules/platform';
 import * as http from 'tns-core-modules/http';
 import { setString, getString, remove } from 'tns-core-modules/application-settings';
 import * as moment from 'moment/moment';
+import { isNullOrUndefined } from '../demo/node_modules/tns-core-modules/utils/types';
 
 export interface KeyValue<T> { [key: string]: T; }
 
@@ -65,6 +66,21 @@ export class Common {
     public saveCrash(errorMessage: string, errorDetails: string): void {
         this.saveBreadcrumb('' + errorDetails, 'crash start');
 
+        let deviceType: string = '';
+        let language: string = '';
+        let manufacturer: string = '';
+        let model: string = '';
+        let os: string = '';
+        let osVersion: string = '';
+        if (!isNullOrUndefined(platform.device)) {
+            deviceType = platform.device.deviceType;
+            language = platform.device.language;
+            manufacturer = platform.device.manufacturer;
+            model = platform.device.model;
+            os = platform.device.os;
+            osVersion = platform.device.osVersion;
+        }
+
         const crashData = {
             project: this.sentryId,
             logger: 'nativescript',
@@ -72,8 +88,8 @@ export class Common {
             message: '' + errorMessage,
             level: 'error',
             tags: {
-                device_type: platform.device.deviceType,
-                device_lang: platform.device.language,
+                device_type: deviceType,
+                device_lang: language,
                 app_version: this.versionCode,
                 trace_category: 'Error'
 
@@ -85,12 +101,12 @@ export class Common {
             release: this.versionName,
             contexts: {
                 device: {
-                    family: platform.device.manufacturer,
-                    model: platform.device.model
+                    family: manufacturer,
+                    model: model
                 },
                 os: {
-                    name: platform.device.os,
-                    version: platform.device.osVersion
+                    name: os,
+                    version: osVersion
                 },
                 runtime: {
                     name: 'Nativescript'
