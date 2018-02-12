@@ -118,8 +118,6 @@ export class Common {
     }
 
     private submitCrash(crash) {
-        console.log('submitCrash', crash.message);
-
         http.request({
             url: this.endPoint,
             method: "POST",
