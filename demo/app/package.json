@@ -1,0 +1,37 @@
+{
+  "name": "nativescript-ng-sentry-demo",
+  "main": "app.js",
+  "version": "1.0.0",
+  "author": {
+    "name": "Essent"
+  },
+  "description": "Demo app for nativescript-ng-sentry",
+  "license": "Apache-2.0",
+  "keywords": [
+    "telerik",
+    "mobile",
+    "nativescript",
+    "{N}",
+    "tns",
+    "appbuilder",
+    "template"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Essent/nativescript-ng-sentry.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Essent/nativescript-ng-sentry/issues"
+  },
+  "homepage": "https://github.com/Essent/nativescript-ng-sentry",
+  "android": {
+    "v8Flags": "--expose_gc"
+  },
+  "devDependencies": {
+    "nativescript-dev-typescript": "^0.3.0"
+  },
+  "scripts": {
+    "build.plugin": "cd ../src && npm run build",
+    "ci.tslint": "npm i && tslint --config '../tslint.json' 'app/**/*.ts' --exclude '**/node_modules/**'"
+  }
+}

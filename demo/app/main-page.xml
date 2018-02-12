@@ -1,0 +1,10 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page"
+  xmlns:ui="nativescript-ng-sentry">
+  <Page.actionBar>
+    <ActionBar title="Sentry Error Reporting"/>
+  </Page.actionBar>
+  <StackLayout class="p-20">
+    <Button text="Open Details Page" tap="openDetails" />
+    <Button text="Force Crash" tap="forceCrash" />
+  </StackLayout>
+</Page>
