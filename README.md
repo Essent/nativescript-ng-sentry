@@ -25,7 +25,7 @@ import { NgSentry } from 'nativescript-ng-sentry';
 At the launch of your app call `setCredentials` with your own credentials, these can be found in your Sentry Project Settings, Client Keys (DSN). Use the public DSN for these credentials. Optionally you can also provide an environment.
 
 ```ts
-NgSentry.getInstance().setCredentials('123456', '123456789abcdefghijklmnopqrstuvw', 'test');
+NgSentry.getInstance().setCredentials('123456', '123456789abcdefghijklmnopqrstuvw', 'development');
 ```
 
 To log a crash, call `saveCrash` with a message and details.
