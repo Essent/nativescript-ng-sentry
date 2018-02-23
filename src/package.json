@@ -27,11 +27,14 @@
         "ci.tslint": "npm i && tslint '**/*.ts' --config '../tslint.json' --exclude '**/node_modules/**'"
     },
     "keywords": [
+        "ecosystem:nativescript",
         "NativeScript",
         "JavaScript",
         "Android",
         "iOS",
-        "Sentry"
+        "Sentry",
+        "Crash",
+        "Reporting"
     ],
     "author": "Essent",
     "bugs": {
@@ -41,7 +44,7 @@
     "homepage": "https://github.com/Essent/nativescript-ng-sentry",
     "repository": {
         "type": "git",
-        "url": "git://github.com/Essent/nativescript-ng-sentry.git"
+        "url": "https://github.com/Essent/nativescript-ng-sentry.git"
     },
     "readmeFilename": "README.md",
     "devDependencies": {
