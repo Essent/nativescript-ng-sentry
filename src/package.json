@@ -56,7 +56,7 @@
         "tslint": "^5.0.0"
     },
     "dependencies": {
-        "moment": "2.15.1",
+        "moment": "2.21.0",
         "nativescript-appversion": "1.4.1"
     },
     "bootstrapper": "nativescript-plugin-seed"
