@@ -1,6 +1,6 @@
 # NativeScript plugin for Sentry
 
-[![npm version](https://img.shields.io/npm/v/@essent/nativescript-ng-sentry.svg?style=flat-square)](https://www.npmjs.com/package/@essent/nativescript-ng-sentry)
+[![npm version](https://badge.fury.io/js/%40essent%2Fnativescript-ng-sentry.svg)](https://www.npmjs.com/package/@essent/nativescript-ng-sentry)
 
 This is a plugin to log app crashes with [Sentry](https://sentry.io).
 
