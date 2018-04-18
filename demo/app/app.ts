@@ -1,7 +1,7 @@
 ﻿import "./bundle-config";
 import * as application from 'tns-core-modules/application';
 import { isAndroid, isIOS } from 'tns-core-modules/platform';
-import { NgSentry } from 'nativescript-ng-sentry';
+import { NgSentry } from '@essent/nativescript-ng-sentry';
 
 application.on(application.launchEvent, function () {
     NgSentry.getInstance().setCredentials('123456', '1234567890abcdefghijklmnopqrstuv');

@@ -19,7 +19,7 @@ This command automatically installs the necessary files, as well as stores nativ
 To use nativescript-ng-sentry you must first `import` the module:
 
 ```ts
-import { NgSentry } from 'nativescript-ng-sentry';
+import { NgSentry } from '@essent/nativescript-ng-sentry';
 ```
 
 At the launch of your app call `setCredentials` with your own credentials, these can be found in your Sentry Project Settings, Client Keys (DSN). Use the public DSN for these credentials. Optionally you can also provide an environment.
