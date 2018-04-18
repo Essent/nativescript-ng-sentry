@@ -176,8 +176,7 @@ export class Common {
 
     private customIndexOf(arr: Array<any>, searchElement: any): number {
         for (let i = 0; i < arr.length; i++) {
-            /* tslint:disable */
-            if (arr[i].x == searchElement.x && arr[i].y == searchElement.y) {
+            if (arr[i].message === searchElement.message) {
                 return i;
             }
         }
