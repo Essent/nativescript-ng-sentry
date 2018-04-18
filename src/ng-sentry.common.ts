@@ -148,7 +148,7 @@ export class Common {
         }).then((response) => {
             // remove crash from saved crashes
             const crashes = JSON.parse(getString(this.storageKey));
-            const index: number = crashes.indexOf(crash, 0);
+            const index: number = this.customIndexOf(crashes, crash);
             if (index > -1) {
                 crashes.splice(index, 1);
                 setString(this.storageKey, JSON.stringify(crashes));
@@ -172,5 +172,15 @@ export class Common {
 
     private isPresentInSettings(storeKey: string): boolean {
         return getString(storeKey) !== undefined;
+    }
+
+    private customIndexOf(arr: Array<any>, searchElement: any): number {
+        for (let i = 0; i < arr.length; i++) {
+            /* tslint:disable */
+            if (arr[i].x == searchElement.x && arr[i].y == searchElement.y) {
+                return i;
+            }
+        }
+        return -1;
     }
 }

@@ -22,4 +22,5 @@ export declare class Common {
     private setVersionName();
     private setVersionCode();
     private isPresentInSettings(storeKey);
+    private customIndexOf(arr, searchElement);
 }
