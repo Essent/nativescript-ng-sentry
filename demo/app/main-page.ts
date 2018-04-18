@@ -1,4 +1,4 @@
-import { NgSentry } from 'nativescript-ng-sentry';
+import { NgSentry } from '@essent/nativescript-ng-sentry';
 import {topmost as topmostFrame} from "tns-core-modules/ui/frame";
 
 function onNavigatingTo(args: any) {

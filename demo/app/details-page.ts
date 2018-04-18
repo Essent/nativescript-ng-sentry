@@ -1,4 +1,4 @@
-import { NgSentry } from 'nativescript-ng-sentry';
+import { NgSentry } from '@essent/nativescript-ng-sentry';
 
 function onNavigatingTo(args: any) {
     const toPage: string = args.object.toString();
