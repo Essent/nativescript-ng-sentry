@@ -21,6 +21,7 @@ export class Common {
     private versionCode: string = '';
     private sentryId: string = '';
     private environment: string = 'DEVELOPMENT';
+    private userId: string = 'unknown';
 
     constructor() {
         if (Common.getInstance()) {
@@ -40,11 +41,14 @@ export class Common {
         return Common.instance;
     }
 
-    public setCredentials(sentryId: string, sentryKey: string, environment?: string) {
+    public setCredentials(sentryId: string, sentryKey: string, environment?: string, userId?: string) {
         this.sentryId = sentryId;
         this.endPoint = 'https://sentry.io/api/' + sentryId + '/store/?sentry_version=7&sentry_client=raven-js%2F3.22.2&sentry_key=' + sentryKey;
         if (environment) {
             this.environment = environment;
+        }
+        if (userId) {
+            this.userId = userId;
         }
     }
 
@@ -113,6 +117,9 @@ export class Common {
                 runtime: {
                     name: 'Nativescript'
                 }
+            },
+            user: {
+                id: this.userId,
             }
         };
 

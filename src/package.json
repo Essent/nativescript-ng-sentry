@@ -1,6 +1,6 @@
 {
     "name": "@essent/nativescript-ng-sentry",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "description": "A NativeScript plugin to log errors with Sentry.",
     "main": "ng-sentry",
     "typings": "index.d.ts",
