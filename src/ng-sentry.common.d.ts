@@ -11,6 +11,7 @@ export declare class Common {
     private versionCode;
     private sentryId;
     private environment;
+    private userId;
     constructor();
     static getInstance(): Common;
     setCredentials(sentryId: string, sentryKey: string, environment?: string, userId?: string): void;
