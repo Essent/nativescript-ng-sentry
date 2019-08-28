@@ -52,6 +52,14 @@ export class Common {
         }
     }
 
+    public setCustomEndPoint(endPoint: string, sentryId: string, environment?: string) {
+        this.endPoint = endPoint;
+        this.sentryId = sentryId;
+        if (environment) {
+            this.environment = environment;
+        }
+    }
+
     public setMaxAmountOfBreadcrumbs(amount: number) {
         this.maxAmountOfBreadcrumbs = amount;
     }
