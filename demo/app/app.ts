@@ -19,4 +19,4 @@ application.on(application.uncaughtErrorEvent, function (args) {
     }
 });
 
-application.start({ moduleName: "main-page" });
+application.run({ moduleName: "main-page" });
