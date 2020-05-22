@@ -8,9 +8,7 @@
       "version": "6.5.0"
     }
   },
-  "description": "NativeScript Application",
-  "license": "SEE LICENSE IN <your-license-filename>",
-  "repository": "<fill-your-repository-here>",
+  "description": "NativeScript NG Sentry Demo Application",
   "dependencies": {
     "@essent/nativescript-ng-sentry": "file:../src",
     "@nativescript/theme": "~2.3.3",
@@ -44,5 +42,5 @@
     "build-android-bundle": "npm run ns-bundle --android --build-app",
     "build-ios-bundle": "npm run ns-bundle --ios --build-app"
   },
-  "readme": "NativeScript Application"
+  "readme": "NativeScript NG Sentry Demo Application"
 }
