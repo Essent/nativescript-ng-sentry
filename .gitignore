@@ -1,6 +1,7 @@
 *.js
 *.js.map
 *.log
+!src/scripts/*.js
 !scripts/*.js
 !postinstall.js
 !preuninstall.js
