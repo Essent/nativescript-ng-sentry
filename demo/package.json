@@ -44,6 +44,5 @@
     "build-android-bundle": "npm run ns-bundle --android --build-app",
     "build-ios-bundle": "npm run ns-bundle --ios --build-app"
   },
-  "gitHead": "2250137db8c1e0bd0eb543e8e4563cb71480c00d",
   "readme": "NativeScript Application"
 }
