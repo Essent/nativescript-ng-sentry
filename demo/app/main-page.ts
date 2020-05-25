@@ -1,5 +1,7 @@
 import { NgSentry } from '@essent/nativescript-ng-sentry';
-import {topmost as topmostFrame} from "tns-core-modules/ui/frame";
+import { Frame } from "tns-core-modules/ui/frame";
+import { Page } from "tns-core-modules/ui/page";
+import { Button } from "tns-core-modules/ui/button";
 
 function onNavigatingTo(args: any) {
     const toPage: string = args.object.toString();
@@ -8,7 +10,11 @@ function onNavigatingTo(args: any) {
 exports.onNavigatingTo = onNavigatingTo;
 
 export function openDetails(args: any) {
-    topmostFrame().navigate({
+    const button: Button = args.object;
+    const page: Page = button.page;
+    const topmostFrame: Frame = page.frame; 
+
+    topmostFrame.navigate({
         moduleName: "details-page"
     });
 }

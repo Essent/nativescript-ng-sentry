@@ -25,10 +25,11 @@
   },
   "homepage": "https://github.com/Essent/nativescript-ng-sentry",
   "android": {
-    "v8Flags": "--expose_gc"
+    "v8Flags": "--expose_gc",
+    "markingMode": "none"
   },
   "devDependencies": {
-    "nativescript-dev-typescript": "^0.3.0"
+    "typescript": "~3.9.3"
   },
   "scripts": {
     "build.plugin": "cd ../src && npm run build",

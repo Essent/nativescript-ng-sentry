@@ -19,9 +19,9 @@ export declare class Common {
     saveBreadcrumb(message: string, category: string, properties?: KeyValue<string>): void;
     saveCrash(errorMessage: string, errorDetails: string): void;
     sendCrashes(): void;
-    private submitCrash(crash);
-    private setVersionName();
-    private setVersionCode();
-    private isPresentInSettings(storeKey);
-    private customIndexOf(arr, searchElement);
+    private submitCrash;
+    private setVersionName;
+    private setVersionCode;
+    private isPresentInSettings;
+    private customIndexOf;
 }
