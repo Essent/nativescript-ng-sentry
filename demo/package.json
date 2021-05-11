@@ -1,22 +1,14 @@
 {
-  "nativescript": {
-    "id": "org.nativescript.demo",
-    "tns-android": {
-      "version": "6.5.0"
-    },
-    "tns-ios": {
-      "version": "6.5.0"
-    }
-  },
   "description": "NativeScript NG Sentry Demo Application",
   "dependencies": {
     "@essent/nativescript-ng-sentry": "file:../src",
-    "@nativescript/theme": "~2.3.3",
-    "tns-core-modules": "~6.5.1"
+    "@nativescript/theme": "~3.0.1",
+    "@nativescript/core": "~7.2.0"
   },
   "devDependencies": {
-    "nativescript-dev-webpack": "~1.5.1",
-    "typescript": "~3.9.3",
+    "@nativescript/ios": "7.2.0",
+    "@nativescript/types": "~7.2.0",
+    "@nativescript/webpack": "^4.1.0",
     "awesome-typescript-loader": "~5.2.1",
     "babel-traverse": "6.26.0",
     "babel-types": "6.26.0",
@@ -28,8 +20,8 @@
     "karma-jasmine": "~3.1.1",
     "karma-nativescript-launcher": "~0.4.0",
     "lazy": "1.0.11",
-    "tns-platform-declarations": "~6.5.1",
-    "tslint": "~6.1.2"
+    "tslint": "~6.1.2",
+    "typescript": "~3.9.7"
   },
   "scripts": {
     "build.plugin": "cd ../src && npm run build",

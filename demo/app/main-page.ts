@@ -1,7 +1,5 @@
 import { NgSentry } from '@essent/nativescript-ng-sentry';
-import { Frame } from "tns-core-modules/ui/frame";
-import { Page } from "tns-core-modules/ui/page";
-import { Button } from "tns-core-modules/ui/button";
+import { Frame, Page, Button } from '@nativescript/core';
 
 function onNavigatingTo(args: any) {
     const toPage: string = args.object.toString();

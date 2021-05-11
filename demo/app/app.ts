@@ -1,6 +1,6 @@
 ﻿import "./bundle-config";
-import * as application from 'tns-core-modules/application';
-import { isAndroid, isIOS } from 'tns-core-modules/platform';
+import * as application from '@nativescript/core/application';
+import { isAndroid, isIOS } from '@nativescript/core';;
 import { NgSentry } from '@essent/nativescript-ng-sentry';
 
 application.on(application.launchEvent, function () {

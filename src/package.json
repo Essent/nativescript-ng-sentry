@@ -1,19 +1,18 @@
 {
     "name": "@essent/nativescript-ng-sentry",
-    "version": "2.0.0",
+    "version": "3.0.0",
     "description": "A NativeScript plugin to log errors with Sentry.",
     "main": "ng-sentry",
     "typings": "index.d.ts",
     "nativescript": {
         "platforms": {
-            "android": "6.0.0",
-            "ios": "6.0.1"
+            "android": "7.0.0",
+            "ios": "7.0.0"
         }
     },
     "scripts": {
-        "tsc": "npm i && tsc",
-        "build": "npm run tsc && npm run build.native",
-        "build.native": "node scripts/build-native.js",
+        "tsc": "tsc",
+        "build": "npm i && ts-patch install && tsc",
         "tslint": "cd .. && tslint \"**/*.ts\" --config tslint.json --exclude \"**/node_modules/**\"",
         "ci.tslint": "npm i && tslint '**/*.ts' --config '../tslint.json' --exclude '**/node_modules/**' --exclude '**/platforms/**'",
         "prepack": "npm run build.native",
@@ -45,16 +44,21 @@
     },
     "readmeFilename": "README.md",
     "devDependencies": {
-        "prompt": "^1.0.0",
+        "prompt": "^1.1.0",
         "rimraf": "^3.0.2",
-        "tns-core-modules": "^6.5.1",
-        "tns-platform-declarations": "^6.5.1",
-        "tslint": "^6.1.2",
-        "typescript": "~3.9.3"
+        "@nativescript/android": "8.0.0",
+        "@nativescript/ios": "7.2.0",
+        "@nativescript/types": "~7.2.0",
+        "tslint": "^6.1.3",
+        "typescript": "4.0.5",
+        "ts-patch": "^1.3.2",
+        "@nativescript/webpack": "^4.1.0"
     },
     "dependencies": {
+        "@nativescript/core": "~7.2.0",
         "moment": "2.26.0",
-        "nativescript-appversion": "1.4.4"
+        "nativescript-appversion": "1.4.4",
+        "ts-node": "^9.1.1"
     },
     "bootstrapper": "nativescript-plugin-seed"
 }
