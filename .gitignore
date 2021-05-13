@@ -33,3 +33,6 @@ demo/report/stats.json
 .vscode/
 .nsprepareinfo
 .DS_Store
+demo/package-lock.json
+src/package-lock.json
+src/platforms/android/nativescript_ng_sentry.aar
