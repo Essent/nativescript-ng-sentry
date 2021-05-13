@@ -1,9 +1,9 @@
 import { getVersionName, getVersionCode } from 'nativescript-appversion';
-import * as platform from 'tns-core-modules/platform';
-import * as http from 'tns-core-modules/http';
-import { setString, getString } from 'tns-core-modules/application-settings';
+import * as platform from '@nativescript/core/platform';
+import { Http } from '@nativescript/core';
+import { setString, getString } from '@nativescript/core/application-settings';
 import * as moment from 'moment/moment';
-import { isNullOrUndefined } from 'tns-core-modules/utils/types';
+import { isNullOrUndefined } from '@nativescript/core/utils/types';
 
 export interface KeyValue<T> {
     [key: string]: T;
@@ -143,7 +143,7 @@ export class Common {
     }
 
     private submitCrash(crash) {
-        http.request({
+        Http.request({
             url: this.endPoint,
             method: "POST",
             headers: {
