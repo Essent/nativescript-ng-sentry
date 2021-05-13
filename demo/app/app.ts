@@ -1,6 +1,6 @@
 ﻿import "./bundle-config";
 import * as application from '@nativescript/core/application';
-import { isAndroid, isIOS } from '@nativescript/core';;
+import { isIOS } from '@nativescript/core';;
 import { NgSentry } from '@essent/nativescript-ng-sentry';
 
 application.on(application.launchEvent, function () {
@@ -12,10 +12,10 @@ application.on(application.resumeEvent, function () {
 });
 
 application.on(application.uncaughtErrorEvent, function (args) {
-    if (isAndroid) {
-        NgSentry.getInstance().saveCrash(args.android.nativeException.getMessage(), args.android);
-    } else if (isIOS) {
+    if (isIOS) {
         NgSentry.getInstance().saveCrash(args.ios, args.ios.stack);
+    } else {
+        NgSentry.getInstance().saveCrash(args.android.nativeException.getMessage(), args.android);
     }
 });
 

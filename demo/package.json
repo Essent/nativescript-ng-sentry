@@ -6,8 +6,9 @@
     "@nativescript/theme": "~3.0.1"
   },
   "devDependencies": {
-    "@nativescript/ios": "~8.0.0",
-    "@nativescript/types": "~8.0.0",
+    "@nativescript/android": "8.0.0",
+    "@nativescript/ios": "7.2.0",
+    "@nativescript/types": "~8.0.1",
     "@nativescript/webpack": "^4.1.0",
     "awesome-typescript-loader": "~5.2.1",
     "babel-traverse": "6.26.0",
