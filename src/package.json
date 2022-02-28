@@ -1,6 +1,6 @@
 {
     "name": "@essent/nativescript-ng-sentry",
-    "version": "3.0.0",
+    "version": "4.0.0",
     "description": "A NativeScript plugin to log errors with Sentry.",
     "main": "ng-sentry",
     "typings": "index.d.ts",
@@ -17,9 +17,9 @@
         "ci.tslint": "npm i && tslint '**/*.ts' --config '../tslint.json' --exclude '**/node_modules/**' --exclude '**/platforms/**'",
         "demo.ios": "npm i && cd ../demo && tns run ios",
         "demo.android": "npm i && cd ../demo && tns run android",
-        "demo.reset": "cd ../demo && npx rimraf -- hooks node_modules platforms package-lock.json",
+        "demo.reset": "cd ../demo && ns clean",
         "plugin.prepare": "npm run build && cd ../demo && tns plugin remove @essent/nativescript-ng-sentry && tns plugin add ../src",
-        "clean": "npm run demo.reset && npx rimraf -- node_modules package-lock.json && npm i"
+        "clean": "npm run demo.reset && npx rimraf node_modules package-lock.json yarn.lock && npm i"
     },
     "keywords": [
         "ecosystem:nativescript",
@@ -43,20 +43,19 @@
     },
     "readmeFilename": "README.md",
     "devDependencies": {
-        "prompt": "^1.1.0",
         "rimraf": "^3.0.2",
-        "@nativescript/core": "~8.0.0",
-        "@nativescript/android": "~8.0.0",
-        "@nativescript/ios": "~8.0.0",
-        "@nativescript/types": "~8.0.0",
+        "@nativescript/core": "~8.1.0",
+        "@nativescript/android": "~8.1.1",
+        "@nativescript/ios": "~8.1.0",
+        "@nativescript/types": "~8.1.0",
         "tslint": "^6.1.3",
-        "typescript": "4.0.5",
+        "typescript": "~4.5.5",
         "ts-patch": "^1.3.2",
-        "@nativescript/webpack": "^4.1.0"
+        "@nativescript/webpack": "^5.0.0"
     },
     "dependencies": {
-        "moment": "2.26.0",
-        "nativescript-appversion": "1.4.4",
+        "moment": "^2.0.0",
+        "@nativescript/appversion": "^2.0.0",
         "ts-node": "^9.1.1"
     },
     "bootstrapper": "nativescript-plugin-seed"
