@@ -1,9 +1,6 @@
-import { getVersionName, getVersionCode } from 'nativescript-appversion';
-import * as platform from '@nativescript/core/platform';
-import { Http } from '@nativescript/core';
-import { setString, getString } from '@nativescript/core/application-settings';
+import { getVersionName, getVersionCode } from '@nativescript/appversion';
+import { Http, ApplicationSettings, Utils, Device } from '@nativescript/core';
 import * as moment from 'moment/moment';
-import { isNullOrUndefined } from '@nativescript/core/utils/types';
 
 export interface KeyValue<T> {
     [key: string]: T;
@@ -78,13 +75,13 @@ export class Common {
         let model: string = '';
         let os: string = '';
         let osVersion: string = '';
-        if (!isNullOrUndefined(platform.device)) {
-            deviceType = platform.device.deviceType;
-            language = platform.device.language;
-            manufacturer = platform.device.manufacturer;
-            model = platform.device.model;
-            os = platform.device.os;
-            osVersion = platform.device.osVersion;
+        if (!Utils.isNullOrUndefined(Device)) {
+            deviceType = Device.deviceType;
+            language = Device.language;
+            manufacturer = Device.manufacturer;
+            model = Device.model;
+            os = Device.os;
+            osVersion = Device.osVersion;
         }
 
         const crashData = {
@@ -125,10 +122,10 @@ export class Common {
 
         let crashes: Array<any> = [];
         if (this.isPresentInSettings(this.storageKey)) {
-            crashes = JSON.parse(getString(this.storageKey));
+            crashes = JSON.parse(ApplicationSettings.getString(this.storageKey));
         }
         crashes.push(crashData);
-        setString(this.storageKey, JSON.stringify(crashes));
+        ApplicationSettings.setString(this.storageKey, JSON.stringify(crashes));
     }
 
     public sendCrashes(): void {
@@ -136,7 +133,7 @@ export class Common {
             return;
         }
 
-        const crashes = JSON.parse(getString(this.storageKey));
+        const crashes = JSON.parse(ApplicationSettings.getString(this.storageKey));
         for (let crash of crashes) {
             this.submitCrash(crash);
         }
@@ -154,11 +151,11 @@ export class Common {
             content: JSON.stringify(crash)
         }).then((response) => {
             // remove crash from saved crashes
-            const crashes = JSON.parse(getString(this.storageKey));
+            const crashes = JSON.parse(ApplicationSettings.getString(this.storageKey));
             const index: number = this.customIndexOf(crashes, crash);
             if (index > -1) {
                 crashes.splice(index, 1);
-                setString(this.storageKey, JSON.stringify(crashes));
+                ApplicationSettings.setString(this.storageKey, JSON.stringify(crashes));
             }
         }, (e) => {
             console.error("Sentry send error", e);
@@ -178,7 +175,7 @@ export class Common {
     }
 
     private isPresentInSettings(storeKey: string): boolean {
-        return getString(storeKey) !== undefined;
+        return ApplicationSettings.getString(storeKey) !== undefined;
     }
 
     private customIndexOf(arr: Array<any>, searchElement: any): number {

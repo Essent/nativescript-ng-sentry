@@ -17,10 +17,11 @@
 			"~/*": [
 				"app/*"
 			],
-			"*": [
-				"./node_modules/*"
+			"@essent/nativescript-ng-sentry": [
+				"../src/index.d.ts"
 			]
-		}
+		},
+		"removeComments": false
 	},
 	"exclude": [
 		"node_modules",
